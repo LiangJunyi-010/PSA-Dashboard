@@ -1,4 +1,170 @@
-const contractPoll = [];
+const colors = [
+    "#ABCDEF", // Pale Blue
+    "#FEDCBA", // Light Beige
+    "#CBAF87", // Light Khaki
+    "#FFEEDD", // Very Light Orange-Pink
+    "#DDFFEE", // Very Light Green
+    "#EEDDFF", // Very Light Purple
+    "#DDBB99", // Light Taupe
+    "#FFFAE1", // Pale Canary
+    "#E1F7D5", // Very Pale Green
+    "#FFEFDB"  // Very Pale Orange
+];
+
+
+const contractPoll = [
+    {
+        id: 1,
+        startingDate : "",
+    arrivalDate : "",
+    deadline : "",
+    // ask backend for estimated time
+    estimateArrivalDate : "",
+    name : "Contract 1",
+    revenue : "10000",
+    penalty : "1000",
+    priority : "High",
+    terminal : "",
+    berth : "",
+    color : colors[0]
+    },
+    {
+        id: 2,
+        startingDate : "",
+    arrivalDate : "",
+    deadline : "",
+    // ask backend for estimated time
+    estimateArrivalDate : "",
+    name : "Contract 2",
+    revenue : "20000",
+    penalty : "10000",
+    priority : "High",
+    terminal : "",
+    berth : "",
+    color : colors[1]
+    },
+    {
+        id: 3,
+        startingDate : "",
+    arrivalDate : "",
+    deadline : "",
+    // ask backend for estimated time
+    estimateArrivalDate : "",
+    name : "Contract 3",
+    revenue : "40000",
+    penalty : "20000",
+    priority : "Low",
+    terminal : "",
+    berth : "",
+    color : colors[2]
+    },
+    {
+        id: 4,
+        startingDate : "",
+    arrivalDate : "",
+    deadline : "",
+    // ask backend for estimated time
+    estimateArrivalDate : "",
+    name : "Contract 4",
+    revenue : "150000",
+    penalty : "5000",
+    priority : "Medium",
+    terminal : "",
+    berth : "",
+    color : colors[3]
+    },
+    {
+        id: 5,
+        startingDate : "",
+    arrivalDate : "",
+    deadline : "",
+    // ask backend for estimated time
+    estimateArrivalDate : "",
+    name : "Contract 5",
+    revenue : "150000",
+    penalty : "5000",
+    priority : "Medium",
+    terminal : "",
+    berth : "",
+    color : colors[4]
+    },
+    {
+        id: 6,
+        startingDate : "",
+    arrivalDate : "",
+    deadline : "",
+    // ask backend for estimated time
+    estimateArrivalDate : "",
+    name : "Contract 6",
+    revenue : "150000",
+    penalty : "5000",
+    priority : "Medium",
+    terminal : "",
+    berth : "",
+    color : colors[5]
+    },
+    {
+        id: 7,
+        startingDate : "",
+    arrivalDate : "",
+    deadline : "",
+    // ask backend for estimated time
+    estimateArrivalDate : "",
+    name : "Contract 7",
+    revenue : "150000",
+    penalty : "5000",
+    priority : "Medium",
+    terminal : "",
+    berth : "",
+    color : colors[6]
+    },
+    {
+        id: 8,
+        startingDate : "",
+    arrivalDate : "",
+    deadline : "",
+    // ask backend for estimated time
+    estimateArrivalDate : "",
+    name : "Contract 8",
+    revenue : "150000",
+    penalty : "5000",
+    priority : "Medium",
+    terminal : "",
+    berth : "",
+    color : colors[7]
+    },
+    {
+        id: 9,
+        startingDate : "",
+    arrivalDate : "",
+    deadline : "",
+    // ask backend for estimated time
+    estimateArrivalDate : "",
+    name : "Contract 9",
+    revenue : "150000",
+    penalty : "5000",
+    priority : "Medium",
+    terminal : "",
+    berth : "",
+    color : colors[8]
+    },
+    {
+        id: 10,
+        startingDate : "",
+    arrivalDate : "",
+    deadline : "",
+    // ask backend for estimated time
+    estimateArrivalDate : "",
+    name : "Contract 10",
+    revenue : "150000",
+    penalty : "5000",
+    priority : "Medium",
+    terminal : "",
+    berth : "",
+    color : colors[9]
+    },
+
+];
 const scheduledContractPoll = [];
 const combinationAnalysis = []
 const dateBufferContracts = {}
@@ -34,6 +200,13 @@ $(document).ready( function () {
         arrivalDateSelector.value = today
         arrivalDateSelector.min = today
         dateId[today] = 0
+        dateBufferContracts[today] = {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": []
+        }
+        
     }
 
     $('#remaining-contract').DataTable({
@@ -85,18 +258,6 @@ $(document).ready( function () {
 } );
 
 
-const colors = [
-    '#FF5733', // Pomegranate
-    '#33FF57', // Emerald
-    '#8D33FF', // Wisteria
-    '#FF33F6', // Magenta
-    '#33DBFF', // Peter River
-    '#FF8333', // Carrot
-    '#FFFD33', // Sunflower
-    '#5EFF33', // Algae Green
-    '#3352FF', // Blue Jeans
-    '#FF335E'  // Alizarin
-];
 
 
 
@@ -117,10 +278,10 @@ function selectDate(event){
     }
     if (dateBufferContracts[dateSelector.value] === undefined){
         dateBufferContracts[dateSelector.value] = {
+            "1": [],
             "2": [],
             "3": [],
-            "4": [],
-            "5": []
+            "4": []
         }
     }
      
@@ -152,19 +313,19 @@ function handleAddContract(event){
     contract.priority = contractPrioritySelector.value
     contract.terminal = terminalSelector.value
     contract.berth = berthSelector.value
+    contract.color = colors[dateId[arrivalDateSelector.value]%10]
     contractPoll.push(contract)
 
-    dateId[arrivalDateSelector.value] += 1
 
     // Create new elements in modules
     const newP = document.createElement('p');
     newP.className = 'drag ui-draggable ui-draggable-handle';
     const newA = document.createElement('a');
     newA.className = 'btn btn-default';
-    newA.textContent = "name";
+    newA.textContent = contractNameSelector.value;
     // Append the new elements
     newP.appendChild(newA);
-    // newP.style.backgroundColor = colors[dateId[arrivalDateSelector.value]%10]
+    newP.style.backgroundColor = colors[dateId[arrivalDateSelector.value]%10]
     draggableArea.appendChild(newP);
     $(newP).draggable({
         helper: "clone",
@@ -177,6 +338,8 @@ function handleAddContract(event){
     if (selectedDate === contract.arrivalDate){
         insertToTable("#remaining-contract", [contract])
     }
+
+    dateId[arrivalDateSelector.value] += 1
     index++;
 
     $('.modal.in').modal('hide')
@@ -213,3 +376,120 @@ function clearTable(tableId){
     table.clear().draw();
 }
 
+function addToDropArea(ui, groupId){
+    if (dateBufferContracts[dateSelector.value] !== undefined){
+        if (dateBufferContracts[dateSelector.value][groupId].length === 10-groupId){
+            return
+        }
+        for (let contract of dateBufferContracts[dateSelector.value][groupId]){
+            if (contract.name == ui.draggable.text()){
+                return
+            }
+        }
+    }
+
+    let contract;
+    for (let c of contractPoll){
+        if (c.name === ui.draggable.text()){
+            contract = c;
+        }
+    }
+    let slots = document.querySelectorAll(`#dropzone${groupId} .slot`);
+    // console.log(slots)
+    // console.log(dateBufferContracts[dateSelector.value]["2"])
+    // console.log(dateBufferContracts[dateSelector.value]["2"].length)
+    let slot = slots[dateBufferContracts[dateSelector.value][groupId].length]
+    slot.style.backgroundColor = contract.color
+    slot.textContent = contract.name
+    dateBufferContracts[dateSelector.value][groupId].push(contract)
+}
+
+$('.drag').draggable({ 
+    appendTo: 'body',
+    helper: 'clone'
+  });
+  
+  $('#dropzone1').droppable({
+    activeClass: 'active',
+    hoverClass: 'hover',
+    accept: ":not(.ui-sortable-helper)", // Reject clones generated by sortable
+    drop: function (e, ui) {
+        addToDropArea(ui, "1")
+    }
+  }).sortable({
+    items: '.drop-item',
+    sort: function() {
+      // gets added unintentionally by droppable interacting with sortable
+      // using connectWithSortable fixes this, but doesn't allow you to customize active/hoverClass options
+      $( this ).removeClass( "active" );
+    }
+  });
+  $('#dropzone2').droppable({
+    activeClass: 'active',
+    hoverClass: 'hover',
+    accept: ":not(.ui-sortable-helper)", // Reject clones generated by sortable
+    drop: function (e, ui) {
+        addToDropArea(ui, "2")
+    }
+  }).sortable({
+    items: '.drop-item',
+    sort: function() {
+      // gets added unintentionally by droppable interacting with sortable
+      // using connectWithSortable fixes this, but doesn't allow you to customize active/hoverClass options
+      $( this ).removeClass( "active" );
+    }
+  });
+  $('#dropzone3').droppable({
+    activeClass: 'active',
+    hoverClass: 'hover',
+    accept: ":not(.ui-sortable-helper)", // Reject clones generated by sortable
+    drop: function (e, ui) {
+        addToDropArea(ui, "3")
+    }
+  }).sortable({
+    items: '.drop-item',
+    sort: function() {
+      // gets added unintentionally by droppable interacting with sortable
+      // using connectWithSortable fixes this, but doesn't allow you to customize active/hoverClass options
+      $( this ).removeClass( "active" );
+    }
+  });
+  $('#dropzone4').droppable({
+    activeClass: 'active',
+    hoverClass: 'hover',
+    accept: ":not(.ui-sortable-helper)", // Reject clones generated by sortable
+    drop: function (e, ui) {
+        addToDropArea(ui, "4")
+    }
+  }).sortable({
+    items: '.drop-item',
+    sort: function() {
+      // gets added unintentionally by droppable interacting with sortable
+      // using connectWithSortable fixes this, but doesn't allow you to customize active/hoverClass options
+      $( this ).removeClass( "active" );
+    }
+  });
+
+function removeArrangeFromBuffer(element){
+    let idx = element.dataset.name
+    let grp = element.dataset.group
+    let contracts = dateBufferContracts[dateSelector.value][grp]
+    if (idx>contracts.length){
+        return
+    }
+    console.log(dateBufferContracts[dateSelector.value][grp].length)
+
+    dateBufferContracts[dateSelector.value][grp].splice(idx-1,1)
+    let slots = document.querySelectorAll(`#dropzone${grp} .slot`);
+    let i=0;
+    console.log(dateBufferContracts[dateSelector.value][grp].length)
+    for (;i<dateBufferContracts[dateSelector.value][grp].length;i++){
+        slots[i].style.backgroundColor = dateBufferContracts[dateSelector.value][grp][i].color
+        slots[i].textContent = dateBufferContracts[dateSelector.value][grp][i].name
+    }
+    for (;i<10-grp;i++){
+        slots[i].style.backgroundColor = "green"
+        slots[i].textContent = ""
+    }
+   
+}

@@ -244,9 +244,13 @@ $(document).ready( function () {
         ]
     });
     $('#all-contract-combinations').DataTable({
+        data :[
+            { buffer: '1', revenue: 'Value1', penalty: 'Penalty1', risk: 'Risk1', categories: ['Cat1', 'Cat2', 'Cat3'], values: [100, 200, 300] },
+            { buffer: '2', revenue: 'Value1', penalty: 'Penalty1', risk: 'Risk1', categories: ['Cat1', 'Cat2', 'Cat3'], values: [100, 200, 300] },
+            { buffer: '3', revenue: 'Value1', penalty: 'Penalty1', risk: 'Risk1', categories: ['Cat1', 'Cat2', 'Cat3'], values: [100, 200, 300] },
+        ],
         columns: [
-            { data: 'id', title: 'ID' },
-            { data: 'name', title: 'Contract Name'},
+            { data: 'buffer', title: 'Buffer' },
             { data: 'revenue', title: 'Value'},
             { data: 'penalty', title: 'Penalty'},
             { data: 'risk', title: 'Risk'},

@@ -1,14 +1,11 @@
 $(function () {
+  var valueData = [355, 390, 300, 350, 390, 180, 355, 390];
+  var riskData = [280, 250, 325, 215, 250, 310, 280, 250];
+  var penaltyData = [200, 220, 180, 190, 210, 175, 220, 200];
 
+  var chartOptions = {
 
-  // =====================================
-  // Profit
-  // =====================================
-  var chart = {
-    series: [
-      { name: "Earnings this month:", data: [355, 390, 300, 350, 390, 180, 355, 390] },
-      { name: "Expense this month:", data: [280, 250, 325, 215, 250, 310, 280, 250] },
-    ],
+    series: [{ name: "Value", data: valueData }],
 
     chart: {
       type: "bar",
@@ -19,11 +16,7 @@ $(function () {
       fontFamily: 'inherit',
       sparkline: { enabled: false },
     },
-
-
     colors: ["#5D87FF", "#49BEFF"],
-
-
     plotOptions: {
       bar: {
         horizontal: false,
@@ -38,13 +31,9 @@ $(function () {
     dataLabels: {
       enabled: false,
     },
-
-
     legend: {
       show: false,
     },
-
-
     grid: {
       borderColor: "rgba(0,0,0,0.1)",
       strokeDashArray: 3,
@@ -57,7 +46,7 @@ $(function () {
 
     xaxis: {
       type: "category",
-      categories: ["16/08", "17/08", "18/08", "19/08", "20/08", "21/08", "22/08", "23/08"],
+      categories: ["shipper1", "shipper2", "shipper3", "shipper4", "shipper5", "shipper6", "shipper7","shipper8"],
       labels: {
         style: { cssClass: "grey--text lighten-2--text fill-color" },
       },
@@ -97,12 +86,63 @@ $(function () {
         }
       }
     ]
-
-
   };
 
-  var chart = new ApexCharts(document.querySelector("#chart"), chart);
-  chart.render();
+  var apexChart = new ApexCharts(document.querySelector("#chart"), chartOptions);
+  apexChart.render();
+
+  $("input[name='option']").change(function () {
+    var selectedValue = $("input[name='option']:checked").val();
+
+    var newData = [];
+    var newCategories = [];
+    var newMin = 0;
+    var newMax = 400;
+
+    switch (selectedValue) {
+      case 'option1':
+        newData = valueData;
+        newCategories = ["ValueCat1", "ValueCat2", "ValueCat3", "ValueCat4", "ValueCat5", "ValueCat6", "ValueCat7", "ValueCat8"];
+        newMin = 0;
+        newMax = 400;
+        break;
+      case 'option2':
+        newData = riskData;
+        newCategories = ["RiskCat1", "RiskCat2", "RiskCat3", "RiskCat4", "RiskCat5", "RiskCat6", "RiskCat7", "RiskCat8"];
+        newMin = 0;
+        newMax = 350;
+        break;
+      case 'option3':
+        newData = penaltyData;
+        newCategories = ["PenaltyCat1", "PenaltyCat2", "PenaltyCat3", "PenaltyCat4", "PenaltyCat5", "PenaltyCat6", "PenaltyCat7", "PenaltyCat8"];
+        newMin = 0;
+        newMax = 250;
+        break;
+    }
+    apexChart.updateSeries([{ data: newData }]);
+    apexChart.updateOptions({
+      xaxis: {
+        categories: newCategories
+      },
+      yaxis: {
+        min: newMin,
+        max: newMax
+      }
+    });
+  });
+
+  $('#all-contract-combinations tbody').on('click', 'tr', function () {
+    var table = $('#all-contract-combinations').DataTable();
+    var rowData = table.row(this).data();
+    // Update the chart based on hiddenData and hiddenCategories from the clicked row
+    apexChart.updateSeries([{ data: [200, 200, 200, 200, 200, 200, 200, 200]}]);
+    apexChart.updateOptions({
+        xaxis: {
+            categories: ["ship1", "ValueCat2", "ValueCat3", "ValueCat4", "ValueCat5", "ValueCat6", "ValueCat7", "ValueCat8"]
+        }
+    });
+});
+
 
 
   // =====================================

@@ -488,14 +488,19 @@
               <div class="card-body p-4">
                 <h5 class="card-title fw-semibold mb-4">All Contract Combinations</h5>
                 <div class="table-responsive">
+                  <style>
+                    #all-contract-combinations tbody tr {
+                        cursor: pointer;
+                    }
+                </style>
                   <table class="table text-nowrap mb-0 align-middle" id="all-contract-combinations">
                     <thead class="text-dark fs-4">
                       <tr>
                         <th class="border-bottom-0">
-                          <h6 class="fw-semibold mb-0">Id</h6>
+                          <h6 class="fw-semibold mb-0">Buffer</h6>
                         </th>
                         <th class="border-bottom-0">
-                          <h6 class="fw-semibold mb-0">Contract Name</h6>
+                          <h6 class="fw-semibold mb-0">Risk</h6>
                         </th>
                         <th class="border-bottom-0">
                           <h6 class="fw-semibold mb-0">Value</h6>
@@ -521,6 +526,21 @@
                   <div class="mb-3 mb-sm-0">
                     <h5 class="card-title fw-semibold">Individual Contract Combination</h5>
                   </div>
+                  <table>
+                    <thead>
+                        <tr>
+                            <th>
+                              <input type="radio" name="option" value="option1" checked="true"> value
+                          </th>
+                          <th>
+                              <input type="radio" name="option" value="option2"> risk
+                          </th>
+                          <th>
+                              <input type="radio" name="option" value="option3"> penalty
+                          </th>
+                        </tr>
+                    </thead>
+                </table>
                 </div>
                 <div id="chart"></div>
               </div>

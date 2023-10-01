@@ -16,149 +16,6 @@ const colors = [
     "#E1F7D5", // Very Pale Green
     "#FFEFDB"  // Very Pale Orange
 ];
-// const planningContractPoll = [
-//     {
-//         id: 1,
-//         startingDate : "",
-//     arrivalDate : "2023-10-04",
-//     deadline : "",
-//     estimateArrivalDate : "",
-//     name : "Contract 1",
-//     revenue : "10000",
-//     penalty : "1000",
-//     priority : "High",
-//     terminal : "Terminal1",
-//     berth : "Berth1",
-//     color : colors[0]
-//     },
-//     {
-//         id: 2,
-//         startingDate : "",
-//     arrivalDate : "2023-10-01",
-//     deadline : "",
-//     estimateArrivalDate : "",
-//     name : "Contract 2",
-//     revenue : "20000",
-//     penalty : "10000",
-//     priority : "High",
-//     terminal : "Terminal1",
-//     berth : "Berth1",
-//     color : colors[1]
-//     },
-//     {
-//         id: 3,
-//         startingDate : "",
-//     arrivalDate : "2023-10-04",
-//     deadline : "",
-//     estimateArrivalDate : "",
-//     name : "Contract 3",
-//     revenue : "40000",
-//     penalty : "20000",
-//     priority : "Low",
-//     terminal : "Terminal1",
-//     berth : "Berth1",
-//     color : colors[2]
-//     },
-//     {
-//         id: 4,
-//         startingDate : "",
-//     arrivalDate : "2023-10-04",
-//     deadline : "",
-//     estimateArrivalDate : "",
-//     name : "Contract 4",
-//     revenue : "150000",
-//     penalty : "5000",
-//     priority : "Medium",
-//     terminal : "Terminal1",
-//     berth : "Berth1",
-//     color : colors[3]
-//     },
-//     {
-//         id: 5,
-//         startingDate : "",
-//     arrivalDate : "2023-10-01",
-//     deadline : "",
-//     estimateArrivalDate : "",
-//     name : "Contract 5",
-//     revenue : "150000",
-//     penalty : "5000",
-//     priority : "Medium",
-//     terminal : "Terminal1",
-//     berth : "Berth1",
-//     color : colors[4]
-//     },
-//     {
-//         id: 6,
-//         startingDate : "",
-//     arrivalDate : "2023-10-03",
-//     deadline : "",
-//     estimateArrivalDate : "",
-//     name : "Contract 6",
-//     revenue : "150000",
-//     penalty : "5000",
-//     priority : "Medium",
-//     terminal : "Terminal1",
-//     berth : "Berth1",
-//     color : colors[5]
-//     },
-//     {
-//         id: 7,
-//         startingDate : "",
-//     arrivalDate : "2023-10-03",
-//     deadline : "",
-//     estimateArrivalDate : "",
-//     name : "Contract 7",
-//     revenue : "150000",
-//     penalty : "5000",
-//     priority : "Medium",
-//     terminal : "Terminal1",
-//     berth : "Berth1",
-//     color : colors[6]
-//     },
-//     {
-//         id: 8,
-//         startingDate : "",
-//     arrivalDate : "2023-10-04",
-//     deadline : "",
-//     estimateArrivalDate : "",
-//     name : "Contract 8",
-//     revenue : "150000",
-//     penalty : "5000",
-//     priority : "Medium",
-//     terminal : "Terminal1",
-//     berth : "Berth1",
-//     color : colors[7]
-//     },
-//     {
-//         id: 9,
-//         startingDate : "",
-//     arrivalDate : "2023-10-01",
-//     deadline : "",
-//     estimateArrivalDate : "",
-//     name : "Contract 9",
-//     revenue : "150000",
-//     penalty : "5000",
-//     priority : "Medium",
-//     terminal : "Terminal1",
-//     berth : "Berth1",
-//     color : colors[8]
-//     },
-//     {
-//         id: 10,
-//         startingDate : "",
-//     arrivalDate : "2023-10-04",
-//     deadline : "",
-//     estimateArrivalDate : "",
-//     name : "Contract 10",
-//     revenue : "150000",
-//     penalty : "5000",
-//     priority : "Medium",
-//     terminal : "Terminal1",
-//     berth : "Berth1",
-//     color : colors[9]
-//     },
-
-// ];
 
 const planningContractPoll = [
     {
@@ -563,9 +420,12 @@ let contractPenaltySelector = document.getElementById("contract-penalty-selector
 let handleTimeSelector = document.getElementById("contract-handle-time-selector");
 let handleTimeDelaySelector = document.getElementById("contract-handle-time-selector");
 let contractPrioritySelector = document.getElementById("contract-handle-time-delay-selector");
-let dateSelector = document.getElementById("date-selector");
-let terminalSelector = document.getElementById("terminal-selector");
-let berthSelector = document.getElementById("berth-selector");
+let scheduledDateSelector = document.getElementById("scheduled-date-selector");
+let availableDateSelector = document.getElementById("available-date-selector");
+let scheduledTerminalSelector = document.getElementById("scheduled-terminal-selector");
+let scheduledBerthSelector = document.getElementById("scheduled-berth-selector");
+let availableTerminalSelector = document.getElementById("available-terminal-selector");
+let availableBerthSelector = document.getElementById("available-berth-selector");
 let draggableArea = document.getElementById("modules")
 let loader = document.getElementById("spinner")
 let combinationTable = document.getElementById("table-wrapper")
@@ -658,18 +518,21 @@ $(document).ready(async function () {
         ]
     });
 
-    if (dateSelector) {
+
         var today = new Date();
         var dd = String(today.getDate()).padStart(2, '0');
         var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
         var yyyy = today.getFullYear();
 
         today = yyyy + '-' + mm + '-' + dd;
-        dateSelector.value = today;
-        dateSelector.min = today;
 
-        arrivalDateSelector.value = today
-        arrivalDateSelector.min = today
+        let scheduledDate = "2023-10-17";
+        scheduledDateSelector.value = scheduledDate;
+        scheduledDateSelector.min = today;
+
+        let availableDate = "2023-10-19";
+        availableDateSelector.value = availableDate
+        availableDateSelector.min = today
         dateId[today] = 0
         dateBufferContracts[today] = {
             "1": [],
@@ -677,18 +540,26 @@ $(document).ready(async function () {
             "3": [],
             "4": []
         }
-        await refresh(false)
-    }
+        await refresh(false, "all")
+    
 } );
 
 
-function checkDisplay(contract){
-    console.log(contract.contract_arrival_date)
-    console.log(dateSelector.value)
-    if (contract.contract_arrival_date === dateSelector.value && contract.berth === berthSelector.value && contract.terminal === terminalSelector.value){
-        return true;
+function checkDisplay(contract, type){
+    if (type === "available") {
+        if (contract.contract_arrival_date === availableDateSelector.value && contract.berth === availableBerthSelector.value && contract.terminal === availableTerminalSelector.value){
+            return true;
+        }
+        return false;
     }
-    return false;
+    else {
+        if (contract.contract_arrival_date === scheduledDateSelector.value && contract.berth === scheduledBerthSelector.value && contract.terminal === scheduledTerminalSelector.value){
+            return true;
+        }
+        return false;
+    }
+
+
 }
 
 
@@ -705,30 +576,28 @@ async function changeBufferSize(){
 }
 
 
-async function refresh(submit) {
+async function refresh(submit, type) {
     let temp = []
         planningContractPoll.forEach(contract => {
-            if (checkDisplay(contract)){
+            if (checkDisplay(contract, "available")){
                 temp.push(contract)
             }
         })
     if (!submit){
         // update tables according to date
-        datePlanningContractPoll = []
         dateScheduledContractPoll = []
-        planningContractPoll.forEach(contract => {
-            if (checkDisplay(contract)){
-                datePlanningContractPoll.push(contract)
-            }
-        })
         scheduledContractPollPoll.forEach(contract => {
-            if (checkDisplay(contract)){
+            if (checkDisplay(contract, "scheduled")){
                 dateScheduledContractPoll.push(contract)
             }
         })
         
-        initTable("#remaining-contract", datePlanningContractPoll)
-        initTable("#scheduled-contract", dateScheduledContractPoll)
+        if (type === "scheduled" || type === "all"){
+            initTable("#scheduled-contract", dateScheduledContractPoll)
+        }
+        if (type === "available" || type === "all") {
+            initTable("#remaining-contract", temp)
+        }
     }
 
     else {
@@ -781,26 +650,20 @@ async function getCombinationResult(contracts, buffer_size, criteria){
 function setMinArrivalDate(){
     const startingDate = startingDateSelector.value;
     // console.log(startingDate)
-    arrivalDateSelector.min = startingDate;
-    deadlineSelector.min = startingDate;
+    availableDateSelector.min = startingDate;
+    scheduledDateSelector.min = startingDate;
 }
 
 
-async function selectDate(event){
+async function selectScheduledDate(event){
     event.preventDefault()
-    arrivalDateSelector.value = dateSelector.value
-    if (dateId[dateSelector.value] === undefined){
-        dateId[dateSelector.value] = 1;
-    }
-    if (dateBufferContracts[dateSelector.value] === undefined){
-        dateBufferContracts[dateSelector.value] = {
-            "1": [],
-            "2": [],
-            "3": [],
-            "4": []
-        }
-    }
-    await refresh()
+    await refresh(false, "scheduled")
+}
+
+async function selectAvailableDate(event){
+    event.preventDefault()
+    arrivalDateSelector.value = availableDateSelector.value
+    await refresh(false, "available")
 }
 
 async function getEstimatedDate(contract){
@@ -823,13 +686,13 @@ async function handleAddContract(event){
         id: index
     }
     contract.contract_start_date = startingDateSelector.value
-    contract.contract_arrival_date = arrivalDateSelector.value
+    contract.contract_arrival_date = availableDateSelector.value
     contract.shipper_name = contractNameSelector.value
     contract.contract_value = contractRevenueSelector.value
     contract.delay_penalty_fee = contractPenaltySelector.value
     contract.goods_priority = contractPrioritySelector.value
-    contract.terminal = terminalSelector.value
-    contract.berth = berthSelector.value
+    contract.terminal = availableTerminalSelector.value
+    contract.berth = availableBerthSelector.value
     contract.handle_time_without_shipper_delay = handleTimeSelector.value
     contract.handle_time_with_shipper_delay = handleTimeDelaySelector.value
     contract.color = colors[dateId[arrivalDateSelector.value]%10]
@@ -837,26 +700,12 @@ async function handleAddContract(event){
     contract = await getEstimatedDate(contract)
     planningContractPoll.push(contract)
 
-    // // Create new elements in modules
-    // const newP = document.createElement('p');
-    // newP.className = 'drag ui-draggable ui-draggable-handle';
-    // const newA = document.createElement('a');
-    // newA.className = 'btn btn-default';
-    // newA.textContent = contractNameSelector.value;
-    // // Append the new elements
-    // newP.appendChild(newA);
-    // newP.style.backgroundColor = colors[dateId[arrivalDateSelector.value]%10]
-    // draggableArea.appendChild(newP);
-    // $(newP).draggable({
-    //     helper: "clone",
-    //     revert: "invalid"
-    //   })
     
-    var selectedDate = document.getElementById('date-selector').value;
+    var selectedDate = availableDateSelector.value;
 
     if (selectedDate === contract.contract_arrival_date){
         insertToTable("#remaining-contract", [contract])
-        await refresh()
+        await refresh(false, "available")
     }
 
     dateId[arrivalDateSelector.value] += 1

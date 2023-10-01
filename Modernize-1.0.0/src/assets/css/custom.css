@@ -2,7 +2,21 @@
     overflow-x: hidden;
     width: 100%;
 }
+.custom-background {
+    background-color: #83c7fe; /* Example light gray color, you can change it as you prefer */
+}
 
+.custom-title {
+    color: #5a5a5a; /* Example color, you can change it */
+    text-shadow: 2px 2px #d1d1d1; /* Example shadow, you can change it */
+}
+
+.custom-paragraph {
+    text-align: center;
+    color: #007bff; /* or any color of your choice */
+    font-size: 18px;
+    font-weight: bold;
+}
 
 
 #spinner {

@@ -128,9 +128,16 @@
         </div>
       </div>
 
+      <div class="text-center p-3 custom-background">
+        <h1 class="display-3 custom-title">BART</h1>
+        <p class="custom-paragraph">A tool for better berth management</p>
+        <div class="alert alert-primary  d-block mx-auto" style="width: 700px;" role="alert">
+          Please note that we have put some dummy data on date 2023-10-17 and 2023-10-19 for demonstration purpose
+        </div>
+    </div>
       <div class="container-fluid" style="margin-top: 20px; padding-top: 20px;">
         <!-- select which date to schedule -->
-        <div class="row">
+        <!-- <div class="row">
           <div class="card">
             <div class="card-body">
               <h5 class="card-title fw-semibold mb-4">Check Schedule</h5>
@@ -140,7 +147,6 @@
                     <div class="mb-3">
                       <label for="start-date" class="form-label">Scheduled Arrival Date</label>
                       <input type="date" class="form-control" oninput="setMinArrivalDate()" id="date-selector" min="" onfocus="this.min=new Date().toISOString().split('T')[0];">
-                      <!-- <div id="emailHelp" class="form-text">T</div> -->
                     </div>
                     <div class="mb-3">
                       <label for="terminal-selector" class="form-label">Terminal</label>
@@ -165,7 +171,7 @@
             </div>
           </div>
           
-        </div>
+        </div> -->
 
         <!-- scheduled contract -->
         <div class="row">
@@ -173,6 +179,38 @@
             <div class="card w-100">
               <div class="card-body p-4">
                 <h5 class="card-title fw-semibold mb-4">Scheduled Contract</h5>
+                <div class="card">
+                  <div class="card-body">
+                    <form onsubmit="selectScheduledDate(event)">
+                      <div class="row col-lg-12">
+                        <div class="mb-3 col-lg-4">
+                          <label for="start-date" class="form-label">Arrival Date</label>
+                          <input type="date" class="form-control" oninput="setMinArrivalDate()" id="scheduled-date-selector" min="" onfocus="this.min=new Date().toISOString().split('T')[0];">
+                          <!-- <div id="emailHelp" class="form-text">T</div> -->
+                        </div>
+                        <div class="mb-3 col-lg-4">
+                          <label for="terminal-selector" class="form-label">Terminal</label>
+                          <select class="form-control" id="scheduled-terminal-selector">
+                            <option>Terminal1</option>
+                            <option>Terminal2</option>
+                            <option>Terminal3</option>
+                          </select>
+                        </div>
+                        <div class="mb-3 col-lg-4">
+                          <label for="berth-selector" class="form-label">Berth</label>
+                          <select class="form-control" id="scheduled-berth-selector">
+                            <option>Berth1</option>
+                            <option>Berth2</option>
+                            <option>Berth3</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="row d-flex justify-content-center">
+                        <button type="submit" class="btn btn-primary" style="width: 250px;">Check Scheduled Contracts</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
                 <div class="table-responsive">
                   <table class="table text-nowrap mb-0 align-middle" id="scheduled-contract">
                     <thead class="text-dark fs-4">
@@ -195,6 +233,38 @@
             <div class="card w-100">
               <div class="card-body p-4">
                 <h5 class="card-title fw-semibold mb-4">Available Contract</h5>
+                <div class="card">
+                  <div class="card-body">
+                    <form onsubmit="selectAvailableDate(event)">
+                      <div class="row col-lg-12">
+                        <div class="mb-3 col-lg-4">
+                          <label for="start-date" class="form-label">Arrival Date</label>
+                          <input type="date" class="form-control" oninput="setMinArrivalDate()" id="available-date-selector" min="" onfocus="this.min=new Date().toISOString().split('T')[0];">
+                          <!-- <div id="emailHelp" class="form-text">T</div> -->
+                        </div>
+                        <div class="mb-3 col-lg-4">
+                          <label for="terminal-selector" class="form-label">Terminal</label>
+                          <select class="form-control" id="available-terminal-selector">
+                            <option>Terminal1</option>
+                            <option>Terminal2</option>
+                            <option>Terminal3</option>
+                          </select>
+                        </div>
+                        <div class="mb-3 col-lg-4">
+                          <label for="berth-selector" class="form-label">Berth</label>
+                          <select class="form-control" id="available-berth-selector">
+                            <option>Berth1</option>
+                            <option>Berth2</option>
+                            <option>Berth3</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="row d-flex justify-content-center">
+                        <button type="submit" class="btn btn-primary" style="width: 250px;">Check Available Contracts</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
                 <div class="table-responsive">
                   <table class="table text-nowrap mb-0 align-middle" id="remaining-contract">
                     <thead class="text-dark fs-4">

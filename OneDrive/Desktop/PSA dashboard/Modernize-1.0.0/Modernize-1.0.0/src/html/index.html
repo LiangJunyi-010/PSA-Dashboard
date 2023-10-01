@@ -60,19 +60,31 @@
                         </div>
                         <div class="col-md-6 mb-3">
                           <label for="contract-priority" class="form-label">Priority</label>
-                          <select class="form-control" id="contract-priority-selector">
+                          <input type="text" class="form-control" id="contract-priority-selector">
+                          <!-- <select class="form-control" id="contract-priority-selector">
                             <option>High</option>
                             <option>Medium</option>
                             <option>Low</option>
-                          </select>
+                          </select> -->
                         </div>
                       </div>
                       
                       
                       <div class="mb-3">
-                        <label for="contract-penalty" class="form-label">Penalty</label>
+                        <label for="contract-penalty-selector" class="form-label">Penalty</label>
                         <input type="text" class="form-control" id="contract-penalty-selector">
                       </div>
+
+
+                      <div class="mb-3">
+                        <label for="contract-handle-time-selector" class="form-label">Handle Time Without Delay</label>
+                        <input type="text" class="form-control" id="contract-handle-time-selector">
+                      </div>
+                      <div class="mb-3">
+                        <label for="contract-handle-time-delay-selector" class="form-label">Handle Time With Delay</label>
+                        <input type="text" class="form-control" id="contract-handle-time-delay-selector">
+                      </div>
+
                       <button type="submit" class="btn btn-primary">Add</button>
                     </form>
                   </div>
@@ -135,33 +147,7 @@
                   <table class="table text-nowrap mb-0 align-middle" id="scheduled-contract">
                     <thead class="text-dark fs-4">
                       <tr>
-                        <th class="border-bottom-0">
-                          <h6 class="fw-semibold mb-0">Id</h6>
-                        </th>
-                        <th class="border-bottom-0">
-                          <h6 class="fw-semibold mb-0">Contract Name</h6>
-                        </th>
-                        <th class="border-bottom-0">
-                          <h6 class="fw-semibold mb-0">Value</h6>
-                        </th>
-                        <th class="border-bottom-0">
-                          <h6 class="fw-semibold mb-0">Penalty</h6>
-                        </th>
-                        <th class="border-bottom-0">
-                          <h6 class="fw-semibold mb-0">Priority</h6>
-                        </th>
-                        <th class="border-bottom-0">
-                          <h6 class="fw-semibold mb-0">Scheduled Start Date</h6>
-                        </th>
-                        <th class="border-bottom-0">
-                          <h6 class="fw-semibold mb-0">Scheduled Arrival Date</h6>
-                        </th>
-                        <th class="border-bottom-0">
-                          <h6 class="fw-semibold mb-0">Estimate Arrival Date</h6>
-                        </th>
-                        <th class="border-bottom-0">
-                          <h6 class="fw-semibold mb-0">Deadline</h6>
-                        </th>
+                      
                       </tr>
                     </thead>
                     <tbody>                      

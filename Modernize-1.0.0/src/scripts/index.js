@@ -1,8 +1,8 @@
 const baseUrl = "https://54.151.150.206"
 const devBaseUrl = "http://localhost:5000"
 const dev = false
-const estimateDateUrl =  "/estimated_arrival_time"
-const riskUrl = "/risks"
+const estimateDateUrl =  dev ? devBaseUrl + "/estimated_arrival_time" : "/estimated_arrival_time"
+const riskUrl = dev ? devBaseUrl + "/risks" : "/risks"
 
 const colors = [
     "#ABCDEF", // Pale Blue
@@ -533,6 +533,7 @@ $(document).ready(async function () {
         let availableDate = "2023-10-19";
         availableDateSelector.value = availableDate
         availableDateSelector.min = today
+        arrivalDateSelector.value = availableDate
         dateId[today] = 0
         dateBufferContracts[today] = {
             "1": [],
@@ -633,6 +634,7 @@ async function getCombinationResult(contracts, buffer_size, criteria){
         buffer_size: buffer_size,
         criteria: criteria
     }
+    console.log(payload)
     let response = await fetch(riskUrl, {
         method: "POST",
         body: JSON.stringify(payload), // assuming that contract needs to be sent as JSON
@@ -688,13 +690,13 @@ async function handleAddContract(event){
     contract.contract_start_date = startingDateSelector.value
     contract.contract_arrival_date = availableDateSelector.value
     contract.shipper_name = contractNameSelector.value
-    contract.contract_value = contractRevenueSelector.value
-    contract.delay_penalty_fee = contractPenaltySelector.value
-    contract.goods_priority = contractPrioritySelector.value
+    contract.contract_value = Number(contractRevenueSelector.value)
+    contract.delay_penalty_fee = Number(contractPenaltySelector.value)
+    contract.goods_priority = parseInt(contractPrioritySelector.value)
     contract.terminal = availableTerminalSelector.value
     contract.berth = availableBerthSelector.value
-    contract.handle_time_without_shipper_delay = handleTimeSelector.value
-    contract.handle_time_with_shipper_delay = handleTimeDelaySelector.value
+    contract.handle_time_without_shipper_delay = parseInt(handleTimeSelector.value)
+    contract.handle_time_with_shipper_delay = parseInt(handleTimeDelaySelector.value)
     contract.color = colors[dateId[arrivalDateSelector.value]%10]
     contract.arrival_dates_probabilities = {}
     contract = await getEstimatedDate(contract)

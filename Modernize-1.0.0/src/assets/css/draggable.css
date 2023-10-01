@@ -1,0 +1,96 @@
+#modules {
+    padding: 20px;
+    background: #eee;
+    margin-bottom: 20px;
+    z-index: 1;
+    border-radius: 10px;
+    min-height: 90px;
+    display: flex;
+    justify-content:flex-start;
+    
+  }
+
+  #modules > * {
+    margin-right: 20px; /* or margin-left: 20px; depending on your needs */
+}
+
+#modules > *:last-child {
+    margin-right: 0; /* Reset margin for the last child element to maintain the container padding */
+}
+  
+  .dropzone {
+    width: 90%;
+    padding: 10px;
+    background: #eee;
+    min-height: 60px;
+    margin-bottom: 10px;
+    z-index: 0;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .active {
+    outline: 1px solid red;
+  }
+  
+  .hover {
+    outline: 1px solid blue;
+  }
+
+  .drag {
+    margin-bottom: 5px;
+    margin-top: 5px;
+    width: 90px;
+    border-radius: 10px;
+    z-index: 1;
+  }
+  
+  .drop-item {
+    cursor: pointer;
+    margin-bottom: 10px;
+    background-color: rgb(255, 255, 255);
+    padding: 5px 10px;
+    border-radius: 3px;
+    border: 1px solid rgb(204, 204, 204);
+    position: relative;
+  }
+  
+  .drop-item .remove {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+  }
+
+  .slot {
+    box-sizing: border-box;
+    border-radius: 5px;
+    height: 40px; /* Takes up 100% of the container height */
+    width: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    cursor: pointer;
+}
+
+.dropzone :first-child {
+  margin-left: 0;
+}
+
+.dropzone :last-child {
+  margin-right: 0;
+}
+
+.green {
+    background-color: green;
+}
+
+.red {
+    background-color: red;
+}
+
+.label-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

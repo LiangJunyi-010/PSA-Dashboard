@@ -1,4 +1,4 @@
-const baseUrl = "http://54.151.150.206"
+const baseUrl = "https://54.151.150.206"
 const devBaseUrl = "http://localhost:5000"
 const dev = false
 const estimateDateUrl = dev ? devBaseUrl  + "/estimated_arrival_time" : baseUrl + "/estimated_arrival_time"

@@ -129,7 +129,7 @@ $(function () {
         break;
     }
     newMax *= 1.1
-    console.log(newMax)
+
     apexChart.updateOptions({
       xaxis: {
         categories: newCategories
@@ -146,27 +146,64 @@ $(function () {
   $('#all-contract-combinations tbody').on('click', 'tr', function () {
     var table = $('#all-contract-combinations').DataTable();
     var rowData = table.row(this).data();
-    console.log(rowData)
+
     let contracts = rowData.contains
     values = []
     risks = []
     penalties = []
     contractNames = []
-    // let maxValue = 0;
-    // let maxRisk = 0;
-    // let maxPenalty = 0;
+
     contracts.forEach(contract => {
-      values.push(contract.revenue)
+      values.push(contract.contract_value)
       risks.push(contract.risk)
-      penalties.push(contract.penalty)
-      contractNames.push(contract.name)
+      penalties.push(contract.delay_penalty_fee)
+      contractNames.push(contract.shipper_name)
     })
     // // Update the chart based on hiddenData and hiddenCategories from the clicked row
-    apexChart.updateSeries([{ data: values}]);
-    // apexChart.updateOptions({
-    //     xaxis: {
-    //         categories: contractNames
-    //     }
-    // });
+
+    var selectedValue = $("input[name='option']:checked").val();
+    var newData = []
+    var newMin = 0;
+    var newMax = 400;
+    switch (selectedValue) {
+      case 'option1':
+        newData = values;
+        newCategories = contractNames
+        newMin = 0;
+        values.forEach(value => {
+          if (parseFloat(value) > newMax){
+            newMax = parseFloat(value)
+          }
+        })
+        break;
+      case 'option2':
+        newData = risks;
+        newCategories = contractNames
+        newMin = 0;
+        newMax = 1;
+        break;
+      case 'option3':
+        newData = penalties;
+        newCategories = contractNames
+        newMin = 0;
+        penalties.forEach(value => {
+          if (parseFloat(value) > newMax){
+            newMax = parseFloat(value)
+          }
+        })
+        break;
+    }
+    newMax *= 1.1
+    apexChart.updateOptions({
+      xaxis: {
+        categories: newCategories
+      },
+      yaxis: {
+        min: newMin,
+        max: newMax
+      }
+    });
+    apexChart.updateSeries([{ data: newData}]);
+
 });
 })

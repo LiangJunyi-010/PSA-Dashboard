@@ -388,11 +388,23 @@ $(document).ready(async function () {
             { data: 'goods_priority', title: 'Priority'},
             // { data: 'startingDate', title: 'Scheduled Starting Date'},
             { data: 'contract_arrival_date', title: 'Scheduled Arrival Date'},
-            { data: 'arrival_dates_probabilities', title: 'Estimated Arrival Date',
+            {data: 'arrival_dates_probabilities',
+            title: 'Estimated Arrival Date',
             render: function(data, type, row) {
-                // Convert object to string representation for display
-                return type === 'display' ? JSON.stringify(data) : data;
-              }},
+                if(type === 'display') {
+                    // Sort the entries by their values and get the top 3
+                    let sortedEntries = Object.entries(data).sort(([, a], [, b]) => b - a).slice(0, 3);
+
+                    let str = '<div style="display: flex; align-items: center;"><table>';
+                    for(const [key, value] of sortedEntries) {
+                        str += `<tr><td>${key}</td><td>${value}</td></tr>`;
+                    }
+                    str += '</table></div>';
+                    return str;
+                }
+                return data;
+            }
+            },
             { data: 'handle_time_without_shipper_delay', title: 'Handle Time Without Shipper Delay'},
             { data: 'handle_time_with_shipper_delay', title: 'Handle Time With Shipper Delay'},
             // { data: 'deadline', title: 'Dealine'},

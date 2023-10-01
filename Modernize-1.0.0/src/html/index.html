@@ -39,7 +39,14 @@
     data-sidebar-position="fixed" data-header-position="fixed">
 
     <div class="body-wrapper">
-      
+
+      <div id="alert" class="alert alert-warning alert-dismissible fade position-fixed" style="top: 0; left: 0; right: 0; z-index: 1030;" role="alert">
+        The contracts should be more than <strong>total berth (10) - buffer size</strong> for valuable prediction
+        <button type="button" class="close" onclick="hideAlert()" aria-label="Close">
+          <span aria-hidden="True">&times;</span>
+        </button>
+      </div>
+    
       <div class="modal" id="add-contract-modal" tabindex="-1" role="dialog" aria-labelledby="Add Contract" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
@@ -202,6 +209,16 @@
                     <div class="card-body">
                       <h5 class="card-title fw-semibold mb-4">Congestion Management Priority</h5>
                       <div class="row">
+                        <label title="buffer-size" class="col-lg-2 mb-0 align-middle" style="margin-top: 10px; height:30px">Buffer Size</label>
+                        <select class="form-select form-select-lg mb-3 col-lg-10" id="buffer-size-selector">
+                          <option>1</option>
+                          <option>2</option>
+                          <option>3</option>
+                          <option>4</option>
+                          <option>5</option>
+                        </select>
+                      </div>
+                      <div class="row">
                         <label class="col-lg-2 mt-2">Contract Penalty</label>
                         <select class="col-lg-1 form-select" style="max-height: 50px;" id="penalty-rank">
                           <option selected value="1">1</option>
@@ -338,18 +355,7 @@
           <div class="col-lg-7 d-flex align-items-strech">
             <div class="card w-100">
               <div class="card-body p-4">
-                <h5 class="card-title fw-semibold mb-4">All Contract Combinations</h5>
-                <div class="row">
-                  <label title="buffer-size" class="col-lg-3 mb-0 align-middle" style="margin-top: 10px; height:30px">Buffer Size</label>
-                  <select class="form-select form-select-lg mb-3 col-lg-9" id="buffer-size-selector" onchange="changeBufferSize()">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                  </select>
-                </div>
-                    
+                <h5 class="card-title fw-semibold mb-4">All Contract Combinations</h5>    
                 <div>
                   <style>
                     #all-contract-combinations tbody tr {

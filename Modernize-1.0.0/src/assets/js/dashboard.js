@@ -98,7 +98,7 @@ $(function () {
     var newData = [];
     var newCategories = [];
     var newMin = 0;
-    var newMax = 400;
+    var newMax = 0;
 
     switch (selectedValue) {
       case 'option1':
@@ -115,7 +115,11 @@ $(function () {
         newData = risks;
         newCategories = contractNames
         newMin = 0;
-        newMax = 1;
+        risks.forEach(value => {
+          if (parseFloat(value) > newMax){
+            newMax = parseFloat(value)
+          }
+        })
         break;
       case 'option3':
         newData = penalties;
@@ -129,7 +133,8 @@ $(function () {
         break;
     }
     newMax *= 1.1
-
+    newMax = Number(newMax.toFixed(2))
+    console.log(newMax)
     apexChart.updateOptions({
       xaxis: {
         categories: newCategories
@@ -164,7 +169,8 @@ $(function () {
     var selectedValue = $("input[name='option']:checked").val();
     var newData = []
     var newMin = 0;
-    var newMax = 400;
+    var newMax = 0;
+    console.log(selectedValue)
     switch (selectedValue) {
       case 'option1':
         newData = values;
@@ -180,7 +186,11 @@ $(function () {
         newData = risks;
         newCategories = contractNames
         newMin = 0;
-        newMax = 1;
+        risks.forEach(value => {
+          if (parseFloat(value) > newMax){
+            newMax = parseFloat(value)
+          }
+        })
         break;
       case 'option3':
         newData = penalties;
@@ -194,6 +204,8 @@ $(function () {
         break;
     }
     newMax *= 1.1
+    newMax = Number(newMax.toFixed(2))
+    console.log(newMax)
     apexChart.updateOptions({
       xaxis: {
         categories: newCategories

@@ -1,3 +1,9 @@
+const baseUrl = "http://54.151.150.206"
+const devBaseUrl = "http://localhost:5000"
+const dev = false
+const estimateDateUrl = dev ? devBaseUrl  + "/estimated_arrival_time" : baseUrl + "/estimated_arrival_time"
+const riskUrl = dev ? devBaseUrl  + "/risks" : baseUrl + "/risks"
+
 const colors = [
     "#ABCDEF", // Pale Blue
     "#FEDCBA", // Light Beige
@@ -154,7 +160,214 @@ const colors = [
 
 // ];
 
-const planningContractPoll = []
+const planningContractPoll = [
+    {
+        "contract_arrival_date": "2023-10-19",
+        "shipper_name": "Shipper 32",
+        "contract_value": 400000,
+        "handle_time_without_shipper_delay": 2,
+        "handle_time_with_shipper_delay": 1,
+        "delay_penalty_fee": 560000.0,
+        "goods_priority": 1,
+        "terminal": "Terminal1",
+        "berth": "Berth1",
+        "arrival_dates_probabilities": {
+            "2023-10-20": 51,
+            "2023-10-21": 34,
+            "2023-10-22": 7,
+            "2023-10-23": 4,
+            "2023-10-24": 4
+        }
+    },
+    {
+        "contract_arrival_date": "2023-10-19",
+        "shipper_name": "Shipper 40",
+        "contract_value": 400000,
+        "handle_time_without_shipper_delay": 2,
+        "handle_time_with_shipper_delay": 1,
+        "delay_penalty_fee": 560000.0,
+        "goods_priority": 1,
+        "terminal": "Terminal1",
+        "berth": "Berth1",
+        "arrival_dates_probabilities": {
+            "2023-10-20": 51,
+            "2023-10-21": 34,
+            "2023-10-22": 7,
+            "2023-10-23": 4,
+            "2023-10-24": 4
+        }
+    },
+    {
+        "contract_arrival_date": "2023-10-19",
+        "shipper_name": "Shipper 41",
+        "contract_value": 400000,
+        "handle_time_without_shipper_delay": 2,
+        "handle_time_with_shipper_delay": 1,
+        "delay_penalty_fee": 560000.0,
+        "goods_priority": 1,
+        "terminal": "Terminal1",
+        "berth": "Berth1",
+        "arrival_dates_probabilities": {
+            "2023-10-20": 51,
+            "2023-10-21": 34,
+            "2023-10-22": 7,
+            "2023-10-23": 4,
+            "2023-10-24": 4
+        }
+    },
+    {
+        "contract_arrival_date": "2023-10-19",
+        "shipper_name": "Shipper 42",
+        "contract_value": 400000,
+        "handle_time_without_shipper_delay": 2,
+        "handle_time_with_shipper_delay": 1,
+        "delay_penalty_fee": 560000.0,
+        "goods_priority": 1,
+        "terminal": "Terminal1",
+        "berth": "Berth1",
+        "arrival_dates_probabilities": {
+            "2023-10-20": 51,
+            "2023-10-21": 34,
+            "2023-10-22": 7,
+            "2023-10-23": 4,
+            "2023-10-24": 4
+        }
+    },
+    {
+        "contract_arrival_date": "2023-10-19",
+        "shipper_name": "Shipper 43",
+        "contract_value": 400000,
+        "handle_time_without_shipper_delay": 2,
+        "handle_time_with_shipper_delay": 1,
+        "delay_penalty_fee": 560000.0,
+        "goods_priority": 1,
+        "terminal": "Terminal1",
+        "berth": "Berth1",
+        "arrival_dates_probabilities": {
+            "2023-10-20": 51,
+            "2023-10-21": 34,
+            "2023-10-22": 7,
+            "2023-10-23": 4,
+            "2023-10-24": 4
+        }
+    },
+    {
+        "contract_arrival_date": "2023-10-19",
+        "shipper_name": "Shipper 33",
+        "contract_value": 400000,
+        "handle_time_without_shipper_delay": 2,
+        "handle_time_with_shipper_delay": 3,
+        "delay_penalty_fee": 480000.0,
+        "goods_priority": 3,
+        "terminal": "Terminal1",
+        "berth": "Berth1",
+        "arrival_dates_probabilities": {
+            "2023-10-20": 91,
+            "2023-10-21": 5,
+            "2023-10-22": 2,
+            "2023-10-23": 1,
+            "2023-10-24": 1,
+            "2023-10-25": 0
+        }
+    },
+    {
+        "contract_arrival_date": "2023-10-19",
+        "shipper_name": "Shipper 34",
+        "contract_value": 320000,
+        "handle_time_without_shipper_delay": 3,
+        "handle_time_with_shipper_delay": 3,
+        "delay_penalty_fee": 384000.0,
+        "goods_priority": 1,
+        "terminal": "Terminal1",
+        "berth": "Berth1",
+        "arrival_dates_probabilities": {
+            "2023-10-20": 100
+        }
+    },
+    {
+        "contract_arrival_date": "2023-10-19",
+        "shipper_name": "Shipper 35",
+        "contract_value": 150000,
+        "handle_time_without_shipper_delay": 3,
+        "handle_time_with_shipper_delay": 4,
+        "delay_penalty_fee": 150000.0,
+        "goods_priority": 3,
+        "terminal": "Terminal1",
+        "berth": "Berth1",
+        "arrival_dates_probabilities": {
+            "2023-10-20": 99,
+            "2023-10-21": 1,
+            "2023-10-22": 0
+        }
+    },
+    {
+        "contract_arrival_date": "2023-10-19",
+        "shipper_name": "Shipper 36",
+        "contract_value": 100000,
+        "handle_time_without_shipper_delay": 1,
+        "handle_time_with_shipper_delay": 3,
+        "delay_penalty_fee": 100000.0,
+        "goods_priority": 2,
+        "terminal": "Terminal1",
+        "berth": "Berth1",
+        "arrival_dates_probabilities": {
+            "2023-10-20": 81,
+            "2023-10-21": 10,
+            "2023-10-22": 6,
+            "2023-10-23": 2,
+            "2023-10-24": 1,
+            "2023-10-25": 0
+        }
+    },
+    {
+        "contract_arrival_date": "2023-10-19",
+        "shipper_name": "Shipper 37",
+        "contract_value": 540000,
+        "handle_time_without_shipper_delay": 2,
+        "handle_time_with_shipper_delay": 4,
+        "delay_penalty_fee": 594000.0,
+        "goods_priority": 3,
+        "terminal": "Terminal1",
+        "berth": "Berth1",
+        "arrival_dates_probabilities": {
+            "2023-10-20": 91,
+            "2023-10-21": 9
+        }
+    },
+    {
+        "contract_arrival_date": "2023-10-19",
+        "shipper_name": "Shipper 38",
+        "contract_value": 420000,
+        "handle_time_without_shipper_delay": 2,
+        "handle_time_with_shipper_delay": 6,
+        "delay_penalty_fee": 462000.0,
+        "goods_priority": 1,
+        "terminal": "Terminal1",
+        "berth": "Berth1",
+        "arrival_dates_probabilities": {
+            "2023-10-20": 49,
+            "2023-10-21": 21,
+            "2023-10-22": 18,
+            "2023-10-23": 12
+        }
+    },
+    {
+        "contract_arrival_date": "2023-10-19",
+        "shipper_name": "Shipper 39",
+        "contract_value": 570000,
+        "handle_time_without_shipper_delay": 1,
+        "handle_time_with_shipper_delay": 4,
+        "delay_penalty_fee": 627000.0,
+        "goods_priority": 1,
+        "terminal": "Terminal1",
+        "berth": "Berth1",
+        "arrival_dates_probabilities": {
+            "2023-10-20": 70,
+            "2023-10-21": 16,
+            "2023-10-22": 14
+        }
+    }
+]
 const scheduledContractPollPoll = [
     {  "contract_arrival_date": "2023-10-15",
         "shipper_name": "Shipper 3",
@@ -330,7 +543,7 @@ const scheduledContractPollPoll = [
             "2023-10-21": 17
         }
 
-}    ]
+}]
 
 
 let dateScheduledContractPoll = [];
@@ -358,6 +571,8 @@ let draggableArea = document.getElementById("modules")
 
 $(document).ready(async function () {
     $('#remaining-contract').DataTable({
+        pageLength: 5,
+        lengthMenu: [5, 10, 25, 50, 100],
         columns: [
              // { data: 'id', title: 'ID' },
              { data: 'shipper_name', title: 'Shipper Name'},
@@ -391,6 +606,8 @@ $(document).ready(async function () {
         ]
     });
     $('#scheduled-contract').DataTable({
+        pageLength: 5,
+        lengthMenu: [5, 10, 25, 50, 100],
         columns: [
             // { data: 'id', title: 'ID' },
             { data: 'shipper_name', title: 'Shipper Name'},
@@ -426,6 +643,8 @@ $(document).ready(async function () {
     });
     $('#all-contract-combinations').DataTable({
         "bFilter": false,
+        pageLength: 5,
+        lengthMenu: [5, 10, 25, 50, 100],
         columns: [
             { data: 'id', title: 'Combination',width: "25%" },
             { data: 'contract_value', title: 'Value',"width": "25%"},
@@ -462,16 +681,27 @@ $(document).ready(async function () {
 
 
 function checkDisplay(contract){
-    if (contract.contract_arrival_date === dateSelector.value && contract.berth === berthSelector.value){
+    console.log(contract.contract_arrival_date)
+    console.log(dateSelector.value)
+    if (contract.contract_arrival_date === dateSelector.value && contract.berth === berthSelector.value && contract.terminal === terminalSelector.value){
         return true;
     }
     return false;
+}
 
+
+function showAlert() {
+    document.getElementById('alert').classList.add('show');
+}
+
+function hideAlert() {
+    document.getElementById('alert').classList.remove('show');
 }
 
 async function changeBufferSize(){
     refresh(true)
 }
+
 
 async function refresh(submit) {
     let temp = []
@@ -500,156 +730,45 @@ async function refresh(submit) {
     }
 
     else {
+        
+
         // calculate p,v,r for each combination and display in the table
         let buffer_size = document.getElementById("buffer-size-selector").value
-        let goods_priority_rank = document.getElementById("goods-priority-rank") 
-        let contract_value_rank = document.getElementById("contract-value-rank") 
-        let penalty_rank = document.getElementById("penalty-rank") 
-        let deadline_rank = document.getElementById("deadline-rank") 
+        let goods_priority_rank = document.getElementById("goods-priority-rank") .value
+        let contract_value_rank = document.getElementById("contract-value-rank") .value
+        let penalty_rank = document.getElementById("penalty-rank").value
+        let deadline_rank = document.getElementById("deadline-rank").value
+
+        let checkNum = 10 - temp.length - buffer_size
+        console.log(checkNum)
+        if (checkNum>=0){
+            showAlert()
+        }
 
         criteria = {"goods_priority": goods_priority_rank, "delay_penalty_fee": penalty_rank, "contract_value": contract_value_rank, "deadline": deadline_rank}
 
-        let [contracts, combinationAnalysis] = await getCombinationResult(temp, buffer_size)
-        console.log(combinationAnalysis)
-        initTable("#remaining-contract", contracts)
-        // display the result in the table
+        let combinationAnalysis = await getCombinationResult(temp, buffer_size, criteria)
         initTable("#all-contract-combinations", combinationAnalysis)
     }
-
 }
 
 
-async function getCombinationResult(contracts, buffer_size, priority){
+async function getCombinationResult(contracts, buffer_size, criteria){
     let payload = {
-        contracts: [
-            {  "contract_arrival_date": "2023-10-15",
-                "shipper_name": "Shipper 3",
-                "contract_value": 393000,
-                "handle_time_without_shipper_delay": 3,
-                "handle_time_with_shipper_delay": 5,
-                "delay_penalty_fee": 510900.0,
-                "goods_priority": 2,
-                "terminal": "Terminal1",
-                "berth": "Berth1",
-                "arrival_dates_probabilities": {
-                    "2023-10-15": 59,
-                    "2023-10-16": 13,
-                    "2023-10-17": 28
-                }
-            }
-        ],
+        contracts: contracts,
         buffer_size: buffer_size,
-        priority: priority
+        criteria: criteria
     }
-    return [contracts,[
-        {
-            id: 1,
-            contains: [{
-            id: 9,
-            startingDate : "",
-            arrivalDate : "",
-            shipper_name : "Contract 9",
-            contract_value : "150000",
-            delay_penalty_fee : "5000",
-            risk: "0.3"
-            },
-            {
-                id: 10,
-                startingDate : "",
-            arrivalDate : "",
-            deadline : "",
-            estimateArrivalDate : "",
-            shipper_name : "Contract 10",
-            contract_value : "150000",
-            delay_penalty_fee : "5000",
-            risk: "0.9"
-            },
-            {
-                id: 14,
-                startingDate : "",
-            arrivalDate : "",
-            deadline : "",
-            estimateArrivalDate : "",
-            shipper_name : "Contract 14",
-            contract_value : "110000",
-            delay_penalty_fee : "11000",
-            risk: "0.3"
-            },
-            {
-                id: 20,
-                startingDate : "",
-            arrivalDate : "",
-            deadline : "",
-            // ask backend for estimated time
-            estimateArrivalDate : "",
-            shipper_name : "Contract 20",
-            contract_value : "80000",
-            delay_penalty_fee : "1000",
-            risk: "0.1"
-            }],
-            risk: 0.8,
-            contract_value: 10000,
-            delay_penalty_fee: 10000
-        },
-        {
-            id: 3,
-            contains: [{
-                id: 9,
-                startingDate : "",
-                arrivalDate : "",
-                deadline : "",
-                estimateArrivalDate : "",
-                shipper_name : "Contract 3",
-                contract_value : "150000",
-                delay_penalty_fee : "5000",
-                risk: "0.8"
-            },
-            {
-                id: 10,
-                startingDate : "",
-                arrivalDate : "",
-                deadline : "",
-                estimateArrivalDate : "",
-                shipper_name : "Contract 8",
-                contract_value : "150000",
-                delay_penalty_fee : "5000",
-                risk: "0.6"
-            }],
-            risk: 0.9,
-            contract_value: 100000,
-            delay_penalty_fee: 1000
-        },
-        {
-            id: 2,
-            contains: [{
-                id: 9,
-                startingDate : "",
-            arrivalDate : "",
-            deadline : "",
-            // ask backend for estimated time
-            estimateArrivalDate : "",
-            shipper_name : "Contract 3",
-            contract_value : "150000",
-            delay_penalty_fee : "5000",
-            risk: "1.0"
-            },
-            {
-                id: 10,
-                startingDate : "",
-            arrivalDate : "",
-            deadline : "",
-            // ask backend for estimated time
-            estimateArrivalDate : "",
-            shipper_name : "Contract 8",
-            contract_value : "150000",
-            delay_penalty_fee : "5000",
-            risk: "0.4"
-            }],
-            risk: 0.6,
-            contract_value: 8000,
-            delay_penalty_fee: 12000
-        },
-    ]]
+    let response = await fetch(riskUrl, {
+        method: "POST",
+        body: JSON.stringify(payload), // assuming that contract needs to be sent as JSON
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+
+    let result = await response.json()
+    return result
 }
 
 
@@ -680,6 +799,16 @@ async function selectDate(event){
 }
 
 async function getEstimatedDate(contract){
+    console.log(estimateDateUrl)
+    let response = await fetch(estimateDateUrl, {
+        method: "POST",
+        body: JSON.stringify(contract), // assuming that contract needs to be sent as JSON
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    let dateEstimation = await response.json()
+    contract["arrival_dates_probabilities"] =  dateEstimation
     return contract
 }
 

@@ -12,11 +12,11 @@ const colors = [
 ];
 
 
-const contractPoll = [
+const planningContractPoll = [
     {
         id: 1,
         startingDate : "",
-    arrivalDate : "",
+    arrivalDate : "2023-10-04",
     deadline : "",
     // ask backend for estimated time
     estimateArrivalDate : "",
@@ -24,14 +24,14 @@ const contractPoll = [
     revenue : "10000",
     penalty : "1000",
     priority : "High",
-    terminal : "",
-    berth : "",
+    terminal : "Terminal1",
+    berth : "Berth1",
     color : colors[0]
     },
     {
         id: 2,
         startingDate : "",
-    arrivalDate : "",
+    arrivalDate : "2023-10-01",
     deadline : "",
     // ask backend for estimated time
     estimateArrivalDate : "",
@@ -39,14 +39,14 @@ const contractPoll = [
     revenue : "20000",
     penalty : "10000",
     priority : "High",
-    terminal : "",
-    berth : "",
+    terminal : "Terminal1",
+    berth : "Berth1",
     color : colors[1]
     },
     {
         id: 3,
         startingDate : "",
-    arrivalDate : "",
+    arrivalDate : "2023-10-04",
     deadline : "",
     // ask backend for estimated time
     estimateArrivalDate : "",
@@ -54,14 +54,14 @@ const contractPoll = [
     revenue : "40000",
     penalty : "20000",
     priority : "Low",
-    terminal : "",
-    berth : "",
+    terminal : "Terminal1",
+    berth : "Berth1",
     color : colors[2]
     },
     {
         id: 4,
         startingDate : "",
-    arrivalDate : "",
+    arrivalDate : "2023-10-04",
     deadline : "",
     // ask backend for estimated time
     estimateArrivalDate : "",
@@ -69,14 +69,14 @@ const contractPoll = [
     revenue : "150000",
     penalty : "5000",
     priority : "Medium",
-    terminal : "",
-    berth : "",
+    terminal : "Terminal1",
+    berth : "Berth1",
     color : colors[3]
     },
     {
         id: 5,
         startingDate : "",
-    arrivalDate : "",
+    arrivalDate : "2023-10-01",
     deadline : "",
     // ask backend for estimated time
     estimateArrivalDate : "",
@@ -84,14 +84,14 @@ const contractPoll = [
     revenue : "150000",
     penalty : "5000",
     priority : "Medium",
-    terminal : "",
-    berth : "",
+    terminal : "Terminal1",
+    berth : "Berth1",
     color : colors[4]
     },
     {
         id: 6,
         startingDate : "",
-    arrivalDate : "",
+    arrivalDate : "2023-10-03",
     deadline : "",
     // ask backend for estimated time
     estimateArrivalDate : "",
@@ -99,14 +99,14 @@ const contractPoll = [
     revenue : "150000",
     penalty : "5000",
     priority : "Medium",
-    terminal : "",
-    berth : "",
+    terminal : "Terminal1",
+    berth : "Berth1",
     color : colors[5]
     },
     {
         id: 7,
         startingDate : "",
-    arrivalDate : "",
+    arrivalDate : "2023-10-03",
     deadline : "",
     // ask backend for estimated time
     estimateArrivalDate : "",
@@ -114,14 +114,14 @@ const contractPoll = [
     revenue : "150000",
     penalty : "5000",
     priority : "Medium",
-    terminal : "",
-    berth : "",
+    terminal : "Terminal1",
+    berth : "Berth1",
     color : colors[6]
     },
     {
         id: 8,
         startingDate : "",
-    arrivalDate : "",
+    arrivalDate : "2023-10-04",
     deadline : "",
     // ask backend for estimated time
     estimateArrivalDate : "",
@@ -129,14 +129,14 @@ const contractPoll = [
     revenue : "150000",
     penalty : "5000",
     priority : "Medium",
-    terminal : "",
-    berth : "",
+    terminal : "Terminal1",
+    berth : "Berth1",
     color : colors[7]
     },
     {
         id: 9,
         startingDate : "",
-    arrivalDate : "",
+    arrivalDate : "2023-10-01",
     deadline : "",
     // ask backend for estimated time
     estimateArrivalDate : "",
@@ -144,14 +144,14 @@ const contractPoll = [
     revenue : "150000",
     penalty : "5000",
     priority : "Medium",
-    terminal : "",
-    berth : "",
+    terminal : "Terminal1",
+    berth : "Berth1",
     color : colors[8]
     },
     {
         id: 10,
         startingDate : "",
-    arrivalDate : "",
+    arrivalDate : "2023-10-04",
     deadline : "",
     // ask backend for estimated time
     estimateArrivalDate : "",
@@ -159,16 +159,170 @@ const contractPoll = [
     revenue : "150000",
     penalty : "5000",
     priority : "Medium",
-    terminal : "",
-    berth : "",
+    terminal : "Terminal1",
+    berth : "Berth1",
     color : colors[9]
     },
 
 ];
-const scheduledContractPoll = [];
-const combinationAnalysis = []
-const dateBufferContracts = {}
-const dateId = {}
+const scheduledContractPollPoll = [
+    {
+        id: 1,
+        startingDate : "",
+    arrivalDate : "2023-10-04",
+    deadline : "",
+    // ask backend for estimated time
+    estimateArrivalDate : "",
+    name : "Contract 1",
+    revenue : "10000",
+    penalty : "1000",
+    priority : "High",
+    terminal : "Terminal1",
+    berth : "Berth1",
+    color : colors[0]
+    },
+    {
+        id: 2,
+        startingDate : "",
+    arrivalDate : "2023-10-01",
+    deadline : "",
+    // ask backend for estimated time
+    estimateArrivalDate : "",
+    name : "Contract 2",
+    revenue : "20000",
+    penalty : "10000",
+    priority : "High",
+    terminal : "Terminal1",
+    berth : "Berth1",
+    color : colors[1]
+    },
+    {
+        id: 3,
+        startingDate : "",
+    arrivalDate : "2023-10-04",
+    deadline : "",
+    // ask backend for estimated time
+    estimateArrivalDate : "",
+    name : "Contract 3",
+    revenue : "40000",
+    penalty : "20000",
+    priority : "Low",
+    terminal : "Terminal1",
+    berth : "Berth1",
+    color : colors[2]
+    },
+    {
+        id: 4,
+        startingDate : "",
+    arrivalDate : "2023-10-04",
+    deadline : "",
+    // ask backend for estimated time
+    estimateArrivalDate : "",
+    name : "Contract 4",
+    revenue : "150000",
+    penalty : "5000",
+    priority : "Medium",
+    terminal : "Terminal1",
+    berth : "Berth1",
+    color : colors[3]
+    },
+    {
+        id: 5,
+        startingDate : "",
+    arrivalDate : "2023-10-01",
+    deadline : "",
+    // ask backend for estimated time
+    estimateArrivalDate : "",
+    name : "Contract 5",
+    revenue : "150000",
+    penalty : "5000",
+    priority : "Medium",
+    terminal : "Terminal1",
+    berth : "Berth1",
+    color : colors[4]
+    },
+    {
+        id: 6,
+        startingDate : "",
+    arrivalDate : "2023-10-03",
+    deadline : "",
+    // ask backend for estimated time
+    estimateArrivalDate : "",
+    name : "Contract 6",
+    revenue : "150000",
+    penalty : "5000",
+    priority : "Medium",
+    terminal : "Terminal1",
+    berth : "Berth1",
+    color : colors[5]
+    },
+    {
+        id: 7,
+        startingDate : "",
+    arrivalDate : "2023-10-03",
+    deadline : "",
+    // ask backend for estimated time
+    estimateArrivalDate : "",
+    name : "Contract 7",
+    revenue : "150000",
+    penalty : "5000",
+    priority : "Medium",
+    terminal : "Terminal1",
+    berth : "Berth1",
+    color : colors[6]
+    },
+    {
+        id: 8,
+        startingDate : "",
+    arrivalDate : "2023-10-04",
+    deadline : "",
+    // ask backend for estimated time
+    estimateArrivalDate : "",
+    name : "Contract 8",
+    revenue : "150000",
+    penalty : "5000",
+    priority : "Medium",
+    terminal : "Terminal1",
+    berth : "Berth1",
+    color : colors[7]
+    },
+    {
+        id: 9,
+        startingDate : "",
+    arrivalDate : "2023-10-01",
+    deadline : "",
+    // ask backend for estimated time
+    estimateArrivalDate : "",
+    name : "Contract 9",
+    revenue : "150000",
+    penalty : "5000",
+    priority : "Medium",
+    terminal : "Terminal1",
+    berth : "Berth1",
+    color : colors[8]
+    },
+    {
+        id: 10,
+        startingDate : "",
+    arrivalDate : "2023-10-04",
+    deadline : "",
+    // ask backend for estimated time
+    estimateArrivalDate : "",
+    name : "Contract 10",
+    revenue : "150000",
+    penalty : "5000",
+    priority : "Medium",
+    terminal : "Terminal1",
+    berth : "Berth1",
+    color : colors[9]
+    },
+
+];
+let dateScheduledContractPoll = [];
+let datePlanningContractPoll = []
+let combinationAnalysis = []
+let dateBufferContracts = {}
+let dateId = {}
 
 let index = 1;
 
@@ -179,14 +333,13 @@ let contractNameSelector = document.getElementById("contract-name-selector");
 let contractRevenueSelector = document.getElementById("contract-revenue-selector");
 let contractPenaltySelector = document.getElementById("contract-penalty-selector");
 let contractPrioritySelector = document.getElementById("contract-priority-selector");
-
-
 let dateSelector = document.getElementById("date-selector");
 let terminalSelector = document.getElementById("terminal-selector");
 let berthSelector = document.getElementById("berth-selector");
 let draggableArea = document.getElementById("modules")
 
-$(document).ready( function () {
+
+$(document).ready(function () {
     if (dateSelector) {
         var today = new Date();
         var dd = String(today.getDate()).padStart(2, '0');
@@ -206,11 +359,11 @@ $(document).ready( function () {
             "3": [],
             "4": []
         }
-        
+        refresh()
     }
 
     $('#remaining-contract').DataTable({
-        data: contractPoll,
+        data: planningContractPoll,
         columns: [
             { data: 'id', title: 'ID' },
             { data: 'name', title: 'Contract Name'},
@@ -227,7 +380,7 @@ $(document).ready( function () {
         ]
     });
     $('#scheduled-contract').DataTable({
-        data: contractPoll,
+        data: planningContractPoll,
         columns: [
             { data: 'id', title: 'ID' },
             { data: 'name', title: 'Contract Name'},
@@ -251,8 +404,8 @@ $(document).ready( function () {
         //     { buffer: '3', revenue: 'Value1', penalty: 'Penalty1', risk: 'Risk1', categories: ['Cat1', 'Cat2', 'Cat3'], values: [100, 200, 300] },
         // ],
         columns: [
-            { data: 'combination', title: 'Combination',width: "25%" },
-            { data: 'revenue', title: 'Value',"width": "25%"},
+            { data: 'id', title: 'Combination',width: "25%" },
+            { data: 'value', title: 'Value',"width": "25%"},
             { data: 'penalty', title: 'Penalty',"width": "25%"},
             { data: 'risk', title: 'Risk',"width": "25%"},
         ],
@@ -263,7 +416,137 @@ $(document).ready( function () {
 } );
 
 
+function checkDisplay(contract){
+    if (contract.arrivalDate === dateSelector.value && contract.berth === berthSelector.value){
+        return true;
+    }
+    return false;
 
+}
+
+
+async function refresh() {
+
+    // update tables according to date
+    datePlanningContractPoll = []
+    dateScheduledContractPoll = []
+    planningContractPoll.forEach(contract => {
+        datePlanningContractPoll.push(contract)
+    })
+    scheduledContractPollPoll.forEach(contract => {
+        dateScheduledContractPoll.push(contract)
+    })
+     
+    initTable("#remaining-contract", datePlanningContractPoll)
+    initTable("#scheduled-contract", dateScheduledContractPoll)
+
+    let temp = []
+    planningContractPoll.forEach(contract => {
+        if (checkDisplay(contract)){
+            temp.push(contract)
+        }
+    })
+
+    // calculate p,v,r for each combination and display in the table
+    combinationAnalysis = await getCombinationResult(temp)
+    
+    // display the result in the table
+    initTable("#all-contract-combinations", combinationAnalysis)
+}
+
+
+async function getCombinationResult(contracts){
+    return [
+        {
+            id: 1,
+            contains: [{
+                id: 9,
+                startingDate : "",
+            arrivalDate : "",
+            deadline : "",
+            // ask backend for estimated time
+            estimateArrivalDate : "",
+            name : "Contract 9",
+            revenue : "150000",
+            penalty : "5000",
+            risk: "0.3"
+            },
+            {
+                id: 10,
+                startingDate : "",
+            arrivalDate : "",
+            deadline : "",
+            // ask backend for estimated time
+            estimateArrivalDate : "",
+            name : "Contract 10",
+            revenue : "150000",
+            penalty : "5000",
+            risk: "0.9"
+            }],
+            risk: 0.8,
+            value: 10000,
+            penalty: 10000
+        },
+        {
+            id: 3,
+            contains: [{
+                id: 9,
+                startingDate : "",
+                arrivalDate : "",
+                deadline : "",
+                estimateArrivalDate : "",
+                name : "Contract 3",
+                revenue : "150000",
+                penalty : "5000",
+                risk: "0.8"
+            },
+            {
+                id: 10,
+                startingDate : "",
+            arrivalDate : "",
+            deadline : "",
+            estimateArrivalDate : "",
+            name : "Contract 8",
+            revenue : "150000",
+            penalty : "5000",
+            risk: "0.6"
+            }],
+            risk: 0.9,
+            value: 100000,
+            penalty: 1000
+        },
+        {
+            id: 2,
+            contains: [{
+                id: 9,
+                startingDate : "",
+            arrivalDate : "",
+            deadline : "",
+            // ask backend for estimated time
+            estimateArrivalDate : "",
+            name : "Contract 3",
+            revenue : "150000",
+            penalty : "5000",
+            risk: "1.0"
+            },
+            {
+                id: 10,
+                startingDate : "",
+            arrivalDate : "",
+            deadline : "",
+            // ask backend for estimated time
+            estimateArrivalDate : "",
+            name : "Contract 8",
+            revenue : "150000",
+            penalty : "5000",
+            risk: "0.4"
+            }],
+            risk: 0.6,
+            value: 8000,
+            penalty: 12000
+        },
+    ]
+}
 
 
 // prevent selecting past
@@ -289,21 +572,12 @@ function selectDate(event){
             "4": []
         }
     }
-     
-    clearTable("#remaining-contract")
-    clearTable("#scheduled-contract")
-    initTable("#remaining-contract", contractPoll)
-    initTable("#scheduled-contract", scheduledContractPoll)
+    refresh()
 }
 
-// call backend for calculation of combinations
-function calculateCombinations(contracts){
-    
-}
 
 function handleAddContract(event){
     event.preventDefault()
-
     let contract = {
         id: index
     }
@@ -319,7 +593,7 @@ function handleAddContract(event){
     contract.terminal = terminalSelector.value
     contract.berth = berthSelector.value
     contract.color = colors[dateId[arrivalDateSelector.value]%10]
-    contractPoll.push(contract)
+    planningContractPoll.push(contract)
 
 
     // Create new elements in modules
@@ -338,10 +612,10 @@ function handleAddContract(event){
       })
     
     var selectedDate = document.getElementById('date-selector').value;
-    console.log(selectedDate, contract.arrivalDate)
-    console.log(selectedDate===contract.arrivalDate)
+
     if (selectedDate === contract.arrivalDate){
         insertToTable("#remaining-contract", [contract])
+        refresh()
     }
 
     dateId[arrivalDateSelector.value] += 1
@@ -361,6 +635,7 @@ function insertToTable(tableId, rows){
 }
 
 function initTable(tableId, datasource){
+    clearTable(tableId)
     const table = $(tableId).DataTable();
     let rows = []
     let date = dateSelector.value;
@@ -394,15 +669,12 @@ function addToDropArea(ui, groupId){
     }
 
     let contract;
-    for (let c of contractPoll){
+    for (let c of planningContractPoll){
         if (c.name === ui.draggable.text()){
             contract = c;
         }
     }
     let slots = document.querySelectorAll(`#dropzone${groupId} .slot`);
-    // console.log(slots)
-    // console.log(dateBufferContracts[dateSelector.value]["2"])
-    // console.log(dateBufferContracts[dateSelector.value]["2"].length)
     let slot = slots[dateBufferContracts[dateSelector.value][groupId].length]
     slot.style.backgroundColor = contract.color
     slot.textContent = contract.name

@@ -1,0 +1,6 @@
+{
+    "rewrites": [
+      { "source": "/estimated_arrival_time", "destination": "https://54.151.150.206/estimated_arrival_time" },
+      { "source": "/risks", "destination": "https://54.151.150.206/risks" }
+    ]
+  }

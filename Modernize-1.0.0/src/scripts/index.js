@@ -567,6 +567,8 @@ let dateSelector = document.getElementById("date-selector");
 let terminalSelector = document.getElementById("terminal-selector");
 let berthSelector = document.getElementById("berth-selector");
 let draggableArea = document.getElementById("modules")
+let loader = document.getElementById("spinner")
+let combinationTable = document.getElementById("table-wrapper")
 
 
 $(document).ready(async function () {
@@ -730,8 +732,6 @@ async function refresh(submit) {
     }
 
     else {
-        
-
         // calculate p,v,r for each combination and display in the table
         let buffer_size = document.getElementById("buffer-size-selector").value
         let goods_priority_rank = document.getElementById("goods-priority-rank") .value
@@ -743,11 +743,16 @@ async function refresh(submit) {
         console.log(checkNum)
         if (checkNum>=0){
             showAlert()
+            return
         }
 
         criteria = {"goods_priority": goods_priority_rank, "delay_penalty_fee": penalty_rank, "contract_value": contract_value_rank, "deadline": deadline_rank}
 
+        loader.style.display = "block"
+        $('#table-wrapper').hide();
         let combinationAnalysis = await getCombinationResult(temp, buffer_size, criteria)
+        loader.style.display = "none"
+        $('#table-wrapper').show();
         initTable("#all-contract-combinations", combinationAnalysis)
     }
 }

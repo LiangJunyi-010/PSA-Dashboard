@@ -339,29 +339,7 @@ let berthSelector = document.getElementById("berth-selector");
 let draggableArea = document.getElementById("modules")
 
 
-$(document).ready(function () {
-    if (dateSelector) {
-        var today = new Date();
-        var dd = String(today.getDate()).padStart(2, '0');
-        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-        var yyyy = today.getFullYear();
-
-        today = yyyy + '-' + mm + '-' + dd;
-        dateSelector.value = today;
-        dateSelector.min = today;
-
-        arrivalDateSelector.value = today
-        arrivalDateSelector.min = today
-        dateId[today] = 0
-        dateBufferContracts[today] = {
-            "1": [],
-            "2": [],
-            "3": [],
-            "4": []
-        }
-        refresh()
-    }
-
+$(document).ready(async function () {
     $('#remaining-contract').DataTable({
         data: planningContractPoll,
         columns: [
@@ -413,6 +391,28 @@ $(document).ready(function () {
             { className: 'fw-semibold mb-0 text-center', targets: '_all' }  // Applies class to all columns
         ]
     });
+
+    if (dateSelector) {
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+
+        today = yyyy + '-' + mm + '-' + dd;
+        dateSelector.value = today;
+        dateSelector.min = today;
+
+        arrivalDateSelector.value = today
+        arrivalDateSelector.min = today
+        dateId[today] = 0
+        dateBufferContracts[today] = {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": []
+        }
+        await refresh()
+    }
 } );
 
 
@@ -558,7 +558,7 @@ function setMinArrivalDate(){
 }
 
 
-function selectDate(event){
+async function selectDate(event){
     event.preventDefault()
     arrivalDateSelector.value = dateSelector.value
     if (dateId[dateSelector.value] === undefined){
@@ -572,7 +572,7 @@ function selectDate(event){
             "4": []
         }
     }
-    refresh()
+    await refresh()
 }
 
 
@@ -646,9 +646,9 @@ function initTable(tableId, datasource){
             rows.push(contract)
         }
     })
-    if (rows !== undefined){
-        table.rows.add(rows).draw();
-    }
+    console.log(rows)
+    table.rows.add(rows).draw();
+    
 }
 
 function clearTable(tableId){

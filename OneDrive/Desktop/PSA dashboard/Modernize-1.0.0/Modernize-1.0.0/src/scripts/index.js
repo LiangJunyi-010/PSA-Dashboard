@@ -497,13 +497,10 @@ async function getCombinationResult(contracts){
         {
             id: 1,
             contains: [{
-                id: 9,
-                startingDate : "",
+            id: 9,
+            startingDate : "",
             arrivalDate : "",
-            deadline : "",
-            // ask backend for estimated time
-            estimateArrivalDate : "",
-            name : "Contract 9",
+            shipper_name : "Contract 9",
             contract_value : "150000",
             delay_penalty_fee : "5000",
             risk: "0.3"
@@ -513,9 +510,8 @@ async function getCombinationResult(contracts){
                 startingDate : "",
             arrivalDate : "",
             deadline : "",
-            // ask backend for estimated time
             estimateArrivalDate : "",
-            name : "Contract 10",
+            shipper_name : "Contract 10",
             contract_value : "150000",
             delay_penalty_fee : "5000",
             risk: "0.9"
@@ -525,9 +521,8 @@ async function getCombinationResult(contracts){
                 startingDate : "",
             arrivalDate : "",
             deadline : "",
-            // ask backend for estimated time
             estimateArrivalDate : "",
-            name : "Contract 14",
+            shipper_name : "Contract 14",
             contract_value : "110000",
             delay_penalty_fee : "11000",
             risk: "0.3"
@@ -539,7 +534,7 @@ async function getCombinationResult(contracts){
             deadline : "",
             // ask backend for estimated time
             estimateArrivalDate : "",
-            name : "Contract 20",
+            shipper_name : "Contract 20",
             contract_value : "80000",
             delay_penalty_fee : "1000",
             risk: "0.1"
@@ -556,7 +551,7 @@ async function getCombinationResult(contracts){
                 arrivalDate : "",
                 deadline : "",
                 estimateArrivalDate : "",
-                name : "Contract 3",
+                shipper_name : "Contract 3",
                 contract_value : "150000",
                 delay_penalty_fee : "5000",
                 risk: "0.8"
@@ -567,7 +562,7 @@ async function getCombinationResult(contracts){
                 arrivalDate : "",
                 deadline : "",
                 estimateArrivalDate : "",
-                name : "Contract 8",
+                shipper_name : "Contract 8",
                 contract_value : "150000",
                 delay_penalty_fee : "5000",
                 risk: "0.6"
@@ -585,7 +580,7 @@ async function getCombinationResult(contracts){
             deadline : "",
             // ask backend for estimated time
             estimateArrivalDate : "",
-            name : "Contract 3",
+            shipper_name : "Contract 3",
             contract_value : "150000",
             delay_penalty_fee : "5000",
             risk: "1.0"
@@ -597,7 +592,7 @@ async function getCombinationResult(contracts){
             deadline : "",
             // ask backend for estimated time
             estimateArrivalDate : "",
-            name : "Contract 8",
+            shipper_name : "Contract 8",
             contract_value : "150000",
             delay_penalty_fee : "5000",
             risk: "0.4"

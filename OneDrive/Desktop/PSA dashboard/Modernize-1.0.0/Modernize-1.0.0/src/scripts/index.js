@@ -244,16 +244,17 @@ $(document).ready( function () {
         ]
     });
     $('#all-contract-combinations').DataTable({
-        data :[
-            { buffer: '1', revenue: 'Value1', penalty: 'Penalty1', risk: 'Risk1', categories: ['Cat1', 'Cat2', 'Cat3'], values: [100, 200, 300] },
-            { buffer: '2', revenue: 'Value1', penalty: 'Penalty1', risk: 'Risk1', categories: ['Cat1', 'Cat2', 'Cat3'], values: [100, 200, 300] },
-            { buffer: '3', revenue: 'Value1', penalty: 'Penalty1', risk: 'Risk1', categories: ['Cat1', 'Cat2', 'Cat3'], values: [100, 200, 300] },
-        ],
+        "bFilter": false,
+        // data :[
+        //     { conbination: '1', revenue: 'Value1', penalty: 'Penalty1', risk: 'Risk1', categories: ['Cat1', 'Cat2', 'Cat3'], values: [100, 200, 300] },
+        //     { buffer: '2', revenue: 'Value1', penalty: 'Penalty1', risk: 'Risk1', categories: ['Cat1', 'Cat2', 'Cat3'], values: [100, 200, 300] },
+        //     { buffer: '3', revenue: 'Value1', penalty: 'Penalty1', risk: 'Risk1', categories: ['Cat1', 'Cat2', 'Cat3'], values: [100, 200, 300] },
+        // ],
         columns: [
-            { data: 'buffer', title: 'Buffer' },
-            { data: 'revenue', title: 'Value'},
-            { data: 'penalty', title: 'Penalty'},
-            { data: 'risk', title: 'Risk'},
+            { data: 'combination', title: 'Combination',width: "25%" },
+            { data: 'revenue', title: 'Value',"width": "25%"},
+            { data: 'penalty', title: 'Penalty',"width": "25%"},
+            { data: 'risk', title: 'Risk',"width": "25%"},
         ],
         columnDefs: [
             { className: 'fw-semibold mb-0 text-center', targets: '_all' }  // Applies class to all columns

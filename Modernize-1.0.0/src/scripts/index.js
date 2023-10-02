@@ -190,39 +190,6 @@ const planningContractPoll = [
             "2023-10-20": 91,
             "2023-10-21": 9
         }
-    },
-    {
-        "contract_arrival_date": "2023-10-19",
-        "shipper_name": "Shipper 38",
-        "contract_value": 420000,
-        "handle_time_without_shipper_delay": 2,
-        "handle_time_with_shipper_delay": 6,
-        "delay_penalty_fee": 462000.0,
-        "goods_priority": 1,
-        "terminal": "Terminal1",
-        "berth": "Berth1",
-        "arrival_dates_probabilities": {
-            "2023-10-20": 49,
-            "2023-10-21": 21,
-            "2023-10-22": 18,
-            "2023-10-23": 12
-        }
-    },
-    {
-        "contract_arrival_date": "2023-10-19",
-        "shipper_name": "Shipper 39",
-        "contract_value": 570000,
-        "handle_time_without_shipper_delay": 1,
-        "handle_time_with_shipper_delay": 4,
-        "delay_penalty_fee": 627000.0,
-        "goods_priority": 1,
-        "terminal": "Terminal1",
-        "berth": "Berth1",
-        "arrival_dates_probabilities": {
-            "2023-10-20": 70,
-            "2023-10-21": 16,
-            "2023-10-22": 14
-        }
     }
 ]
 const scheduledContractPollPoll = [

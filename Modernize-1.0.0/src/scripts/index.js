@@ -17,7 +17,7 @@ const colors = [
     "#FFEFDB"  // Very Pale Orange
 ];
 
-const planningContractPoll = [
+let planningContractPoll = [
     {
         "contract_arrival_date": "2023-10-19",
         "shipper_name": "Shipper 32",
@@ -397,6 +397,15 @@ let draggableArea = document.getElementById("modules")
 let loader = document.getElementById("spinner")
 let combinationTable = document.getElementById("table-wrapper")
 
+function checkSameContract(contract1, contract2){
+    let keys = Object.keys(contract1)
+    for (let key of keys){
+        if (contract1[key]!=contract2[key]){
+            return false;
+        }
+    }
+    return true;
+}
 
 $(document).ready(async function () {
     $('#remaining-contract').DataTable({
@@ -404,6 +413,12 @@ $(document).ready(async function () {
         lengthMenu: [5, 10, 25, 50, 100],
         columns: [
              // { data: 'id', title: 'ID' },
+             { 
+                data: null, 
+                title: 'Actions',
+                defaultContent: '<button class="btn btn-danger">Delete</button>', 
+                orderable: false 
+            },
              { data: 'shipper_name', title: 'Shipper Name'},
              { data: 'contract_value', title: 'Value'},
              { data: 'delay_penalty_fee', title: 'Penalty'},
@@ -434,6 +449,22 @@ $(document).ready(async function () {
             { className: 'fw-semibold mb-0 text-center', targets: '_all' }  // Applies class to all columns
         ]
     });
+
+    $('#remaining-contract tbody').on('click', '.btn-danger', function() {
+        console.log("delete")
+        const table = $('#remaining-contract').DataTable();
+        let row = table.row($(this).parents('tr')).data()
+
+        planningContractPoll = planningContractPoll.filter(function(item) {
+            return checkSameContract(item, row);
+        });
+
+        table
+            .row($(this).parents('tr'))
+            .remove()
+            .draw();
+    });
+
     $('#scheduled-contract').DataTable({
         pageLength: 5,
         lengthMenu: [5, 10, 25, 50, 100],
@@ -470,6 +501,8 @@ $(document).ready(async function () {
             { className: 'fw-semibold mb-0 text-center', targets: '_all' }  // Applies class to all columns
         ]
     });
+
+
     $('#all-contract-combinations').DataTable({
         "bFilter": false,
         pageLength: 5,
@@ -511,6 +544,7 @@ $(document).ready(async function () {
         await refresh(false, "all")
     
 } );
+
 
 
 function checkDisplay(contract, type){

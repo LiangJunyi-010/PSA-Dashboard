@@ -399,6 +399,7 @@ let combinationTable = document.getElementById("table-wrapper")
 
 function checkSameContract(contract1, contract2){
     let keys = Object.keys(contract1)
+    console.log(keys)
     for (let key of keys){
         if (contract1[key]!=contract2[key]){
             return false;
@@ -456,7 +457,7 @@ $(document).ready(async function () {
         let row = table.row($(this).parents('tr')).data()
 
         planningContractPoll = planningContractPoll.filter(function(item) {
-            return checkSameContract(item, row);
+            return !checkSameContract(item, row);
         });
 
         table
